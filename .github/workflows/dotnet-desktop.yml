@@ -50,7 +50,12 @@ jobs:
 
     - name: Restore nuget packages
       run: nuget restore $env:Solution_Name
-        
+
+    - name: Install .NET Framework 4.8 Developer Pack
+      run: |
+        Invoke-WebRequest https://download.visualstudio.microsoft.com/download/pr/37d4db4d-4cb4-4c56-bd10-a37d45e559ea/23022fa97b3f3c3f11a20050d2e1dc9a/ndp48-devpack-enu.exe -OutFile ndp48-devpack-enu.exe
+        Start-Process ndp48-devpack-enu.exe -ArgumentList "/q" -Wait
+          
     # Create the app package by building and packaging the Windows Application Packaging project
     - name: Build the solution
       run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration
