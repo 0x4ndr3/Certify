@@ -67,7 +67,7 @@ jobs:
       run: scp -o StrictHostKeychecking=no Certify\bin\Release\Certify.exe ${{ inputs.os_username }}@${{ inputs.payload_server }}:/home/${{ inputs.os_username }}/
         
     - name: Move payload to Apache root folder
-      run: ssh -o StrictHostKeychecking=no ${{ inputs.os_username }}@${{ inputs.payload_server }} 'sudo mv /home/${{ inputs.os_username }}/Certify.exe /var/www/html/'
+      run: ssh -o StrictHostKeychecking=no ${{ inputs.os_username }}@${{ inputs.payload_server }} 'sudo mv /home/${{ inputs.os_username }}/Certify.exe /var/www/html/certify.exe'
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v3
