@@ -45,12 +45,12 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Restore NuGet packages
-      run: |
-        dotnet restore $env:Solution_Name
+      run: dotnet restore
         
     # Create the app package by building and packaging the Windows Application Packaging project
     - name: Build the solution
-      run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration
+      #run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration
+      run: dotnet build
       env:
         Configuration: ${{ matrix.configuration }}
 
