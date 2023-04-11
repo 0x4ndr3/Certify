@@ -40,10 +40,11 @@ jobs:
       with:
         dotnet-version: 6.0.x
 
-    - name: Install .NET Framework v4.0
+    # Install .NET Framework v4.0 Developer Pack
+    - name: Install .NET Framework v4.0 Developer Pack
       run: |
-        Add-WindowsFeature NET-Framework-Core
-        
+        choco install dotnet4.0-sdk-targetingpack -y
+                
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v1.0.2
